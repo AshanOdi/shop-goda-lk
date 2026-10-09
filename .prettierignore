@@ -1,0 +1,9 @@
+# Generated or managed by tools
+pnpm-lock.yaml
+next-env.d.ts
+.next
+node_modules
+drizzle
+
+# Hand-written docs keep their own layout
+*.md
