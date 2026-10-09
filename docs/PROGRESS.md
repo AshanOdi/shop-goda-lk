@@ -19,6 +19,10 @@ Acceptance: `pnpm dev` runs; CI green; staging URL live.
 
 ## Done
 
+- M0 task 1 `m0/project-setup`: Next.js 16 scaffold, Prettier, `pnpm check` (PR #1).
+- M0 task 2 `m0/lib-money-phone`: Vitest, `money.ts`, `phone.ts`, 80 unit tests (committed straight to `main`).
+- M0 task 3 `m0/database`: Docker Postgres, Drizzle client, `env.ts`, `/api/health`.
+
 ## Waiting on founders
 
 See docs/SPEC.md section 17.

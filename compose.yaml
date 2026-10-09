@@ -1,0 +1,22 @@
+# Local development services. Start with `docker compose up -d`, stop with `docker compose down`.
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sidadiya
+      POSTGRES_PASSWORD: sidadiya
+      POSTGRES_DB: sidadiya
+    ports:
+      - "5432:5432"
+    volumes:
+      # Keeps the data when the container is recreated. `docker compose down -v` wipes it.
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sidadiya -d sidadiya"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres-data:
