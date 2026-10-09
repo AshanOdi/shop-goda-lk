@@ -1,0 +1,24 @@
+# Progress
+
+## Current milestone
+
+M0 — Foundation (in progress)
+
+### M0 plan
+
+Split into small tasks, one branch each:
+
+1. `m0/project-setup` — git repo, Next.js scaffold (TypeScript, Tailwind, App Router, `src/`), Prettier, base scripts.
+2. `m0/lib-money-phone` — Vitest, `src/lib/money.ts` and `src/lib/phone.ts` with full unit tests.
+3. `m0/database` — Docker Compose Postgres, Drizzle + drizzle-kit, `src/env.ts` (zod-validated env), `.env.example`.
+4. `m0/ui-foundation` — shadcn/ui, brand design tokens (SPEC 11), Inter font, base layout, next-intl scaffold.
+5. `m0/testing-ci` — Playwright (390 × 844), `pnpm check`, GitHub Actions.
+6. `m0/monitoring-deploy` — Sentry, Vercel project with preview deploys and staging.
+
+Acceptance: `pnpm dev` runs; CI green; staging URL live.
+
+## Done
+
+## Waiting on founders
+
+See docs/SPEC.md section 17.
