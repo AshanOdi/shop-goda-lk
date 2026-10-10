@@ -8,7 +8,7 @@
 
 ## What we built
 
-An empty Next.js app with TypeScript, Tailwind CSS, ESLint and Prettier, plus a `pnpm check` command that tells us whether the code is healthy. Nothing Sidadiya-specific yet: this is the base every later feature is built on.
+An empty Next.js app with TypeScript, Tailwind CSS, ESLint and Prettier, plus a `pnpm check` command that tells us whether the code is healthy. Nothing Ape Kade-specific yet: this is the base every later feature is built on.
 
 ## Why it matters
 
@@ -148,7 +148,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 2. Create `src/app/hello/page.tsx`:
    ```tsx
    export default function Hello() {
-     return <h1 className="p-8 text-2xl">Hello Sidadiya</h1>;
+     return <h1 className="p-8 text-2xl">Hello Ape Kade</h1>;
    }
    ```
    Open http://localhost:3000/hello. You made a route without touching any router.

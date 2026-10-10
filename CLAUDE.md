@@ -1,6 +1,6 @@
-# CLAUDE.md — Sidadiya
+# CLAUDE.md — Ape Kade
 
-Sidadiya is a multi-tenant shop builder for small Sri Lankan sellers who sell on Facebook, Instagram, TikTok and WhatsApp. The full spec is in `docs/SPEC.md`. Read it before starting any work, and re-read the relevant section before each milestone.
+Ape Kade is a multi-tenant shop builder for small Sri Lankan sellers who sell on Facebook, Instagram, TikTok and WhatsApp. The full spec is in `docs/SPEC.md`. Read it before starting any work, and re-read the relevant section before each milestone.
 
 ## The one rule
 
@@ -39,7 +39,7 @@ Not allowed: Supabase Auth or Supabase client SDK for data, Prisma, Redux, CSS-i
 ## Design rules
 
 - Mobile-first at 375 px. Buyer pages must work in the Facebook and WhatsApp in-app browsers.
-- Match the look in `docs/brand/` (the marketing ads show the storefront, checkout, dashboard, receipt, waybill and tracking page). Brand tokens are in SPEC section 11.
+- Ape Kade's look is defined by the brand tokens in SPEC section 11 (maroon and orange). `docs/brand/` holds another product's ads: use them only to see which screens and sections exist, never copy their name, colours, slogans or style.
 - Every screen handles loading, empty and error states. Tap targets at least 44 px.
 
 ## Commands

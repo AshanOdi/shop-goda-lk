@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { parseEnv } from "@/env";
 
 const required = {
-  DATABASE_URL: "postgres://sidadiya:sidadiya@localhost:5432/sidadiya",
+  DATABASE_URL: "postgres://apekade:apekade@localhost:5432/apekade",
   BETTER_AUTH_SECRET: "a".repeat(32),
 };
 

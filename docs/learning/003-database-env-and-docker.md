@@ -128,7 +128,7 @@ export function parseEnv(source: Record<string, string | undefined>): Env {
 1. With Docker running, open http://localhost:3000/api/health and look for `{"status":"ok"}`.
 2. Run `docker compose stop` and refresh: you get `503` and `"database":"unreachable"`. Start it again with `docker compose start`.
 3. In `.env.local`, change `BETTER_AUTH_SECRET` to `abc`, then restart `pnpm dev` and open the health URL. The terminal shows the validation error naming the variable. Undo the change.
-4. Peek inside the database: `docker compose exec postgres psql -U sidadiya` then `\l` (list databases) and `\q` (quit).
+4. Peek inside the database: `docker compose exec postgres psql -U apekade` then `\l` (list databases) and `\q` (quit).
 
 ## Check your understanding
 
