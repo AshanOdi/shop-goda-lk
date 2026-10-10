@@ -10,3 +10,5 @@ drizzle
 
 # shadcn/ui components are generated; keep them as the CLI writes them
 src/components/ui
+test-results
+playwright-report
