@@ -7,3 +7,6 @@ drizzle
 
 # Hand-written docs keep their own layout
 *.md
+
+# shadcn/ui components are generated; keep them as the CLI writes them
+src/components/ui
