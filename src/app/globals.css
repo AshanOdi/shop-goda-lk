@@ -57,32 +57,32 @@
 }
 
 :root {
-  /* SPEC 11 Ape Kade brand tokens (placeholders until a designer confirms them). */
-  --brand-maroon: #7a1f2b;
-  --brand-orange: #f08a24;
-  --brand-peach: #ffe3c7;
-  --brand-sand: #fff8f1;
-  --brand-ink: #2b1a17;
-  --shop-accent: #7a1f2b;
+  /* Warm, editorial palette: near-black ink, baked clay, and citrus orange. */
+  --brand-maroon: #8f3d2f;
+  --brand-orange: #f6a23a;
+  --brand-peach: #ffd7a8;
+  --brand-sand: #f7f1e7;
+  --brand-ink: #171615;
+  --shop-accent: #f6a23a;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --background: var(--brand-sand);
+  --foreground: var(--brand-ink);
+  --card: #fffaf2;
+  --card-foreground: var(--brand-ink);
+  --popover: #fffaf2;
+  --popover-foreground: var(--brand-ink);
   --primary: var(--brand-maroon);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --primary-foreground: var(--brand-sand);
+  --secondary: #e9e0d3;
+  --secondary-foreground: var(--brand-ink);
+  --muted: #e9e0d3;
+  --muted-foreground: #6d665e;
+  --accent: var(--brand-orange);
+  --accent-foreground: var(--brand-ink);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: var(--brand-maroon);
+  --border: #ddd3c6;
+  --input: #ddd3c6;
+  --ring: var(--brand-orange);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
