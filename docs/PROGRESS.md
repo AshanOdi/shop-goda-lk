@@ -21,8 +21,13 @@ Acceptance: `pnpm dev` runs; CI green; staging URL live.
 
 - M0 task 1 `m0/project-setup`: Next.js 16 scaffold, Prettier, `pnpm check` (PR #1).
 - M0 task 2 `m0/lib-money-phone`: Vitest, `money.ts`, `phone.ts`, 80 unit tests (committed straight to `main`).
-- M0 task 3 `m0/database`: Docker Postgres, Drizzle client, `env.ts`, `/api/health`.
+- M0 task 3 `m0/database`: Docker Postgres, Drizzle client, `env.ts`, `/api/health` (PR #2).
+- M0 task 4 `m0/ui-foundation`: shadcn/ui, Ape Kade brand tokens, Inter, next-intl, placeholder home page; renamed the project from the reference product (Sidadiya) to Ape Kade.
 
 ## Waiting on founders
 
-See docs/SPEC.md section 17.
+See docs/SPEC.md section 17. Placeholders in use:
+
+- Domain `apekade.lk` (`NEXT_PUBLIC_APP_URL`, `EMAIL_FROM_DOMAIN`): availability not checked.
+- Brand colours and logo (SPEC 11): placeholder maroon/orange tokens, text-only logo.
+- Pro plan price: `PRO_PLAN_PRICE_CENTS=199000`.
