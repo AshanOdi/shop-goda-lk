@@ -1,0 +1,34 @@
+{
+  "Metadata": {
+    "title": "Ape Kade — an online shop for every seller",
+    "description": "Turn your Facebook, Instagram, TikTok or WhatsApp page into an online shop with checkout, cash on delivery, waybills, receipts and order tracking."
+  },
+  "HomePage": {
+    "brand": "Ape Kade",
+    "eyebrow": "For sellers on Facebook, Instagram, TikTok and WhatsApp",
+    "title": "Turn your page into a <mark>real online shop.</mark>",
+    "subtitle": "Buyers choose their items, pick cash on delivery or bank transfer, and place the order themselves. Every order lands in one place, ready to pack and ship.",
+    "cta": "Create your shop",
+    "trial": "Free for 14 days. No card needed.",
+    "featuresTitle": "Everything a small shop needs",
+    "features": {
+      "link": {
+        "title": "Your own shop link",
+        "body": "Share {domain}/store/your-shop in your bio, posts and chats."
+      },
+      "payments": {
+        "title": "Cash on delivery and bank transfer",
+        "body": "Buyers pay the way they already do. Card payments come later."
+      },
+      "documents": {
+        "title": "Waybills and receipts",
+        "body": "Print a waybill with the COD amount and send a receipt in one tap."
+      },
+      "tracking": {
+        "title": "Order tracking for buyers",
+        "body": "Buyers follow their order with a link, so fewer \"where is my parcel?\" messages."
+      }
+    },
+    "footer": "© Ape Kade · Made in Sri Lanka"
+  }
+}
