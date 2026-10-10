@@ -79,7 +79,7 @@ Use this template:
 Two or three sentences a non-developer could follow.
 
 ## Why it matters
-Which part of Sidadiya this enables, and what would break without it.
+Which part of Ape Kade this enables, and what would break without it.
 
 ## New concepts
 For every Next.js, React, TypeScript, database or tooling idea used for the first

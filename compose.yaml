@@ -4,16 +4,16 @@ services:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: sidadiya
-      POSTGRES_PASSWORD: sidadiya
-      POSTGRES_DB: sidadiya
+      POSTGRES_USER: apekade
+      POSTGRES_PASSWORD: apekade
+      POSTGRES_DB: apekade
     ports:
       - "5432:5432"
     volumes:
       # Keeps the data when the container is recreated. `docker compose down -v` wipes it.
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U sidadiya -d sidadiya"]
+      test: ["CMD-SHELL", "pg_isready -U apekade -d apekade"]
       interval: 5s
       timeout: 5s
       retries: 10

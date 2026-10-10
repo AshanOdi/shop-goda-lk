@@ -29,10 +29,10 @@ const envSchema = z.object({
   NEXT_PUBLIC_ASSETS_URL: z.url().optional(),
 
   RESEND_API_KEY: optionalString,
-  EMAIL_FROM_DOMAIN: z.string().default("mail.sidadiya.com"),
+  EMAIL_FROM_DOMAIN: z.string().default("mail.apekade.lk"),
 
   TEXTLK_API_KEY: optionalString,
-  TEXTLK_SENDER_ID: z.string().default("Sidadiya"),
+  TEXTLK_SENDER_ID: z.string().default("ApeKade"),
 
   INNGEST_EVENT_KEY: optionalString,
   INNGEST_SIGNING_KEY: optionalString,
@@ -44,8 +44,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_POSTHOG_KEY: optionalString,
 
   PAYHERE_SANDBOX: z.stringbool().default(true),
-  SIDADIYA_PAYHERE_MERCHANT_ID: optionalString,
-  SIDADIYA_PAYHERE_MERCHANT_SECRET: optionalString,
+  APEKADE_PAYHERE_MERCHANT_ID: optionalString,
+  APEKADE_PAYHERE_MERCHANT_SECRET: optionalString,
 
   // OPEN QUESTION (SPEC 7.6): Pro plan price; placeholder Rs 1,990.
   PRO_PLAN_PRICE_CENTS: z.coerce.number().int().positive().default(199000),

@@ -1,7 +1,7 @@
-# Sidadiya — Product and Engineering Spec (v1)
+# Ape Kade — Product and Engineering Spec (v1)
 
 > Audience: Claude Code and the engineering team.
-> Purpose: everything needed to build Sidadiya from an empty repo to a production launch.
+> Purpose: everything needed to build Ape Kade from an empty repo to a production launch.
 > Rule: when this spec and your own preference disagree, follow the spec. When the spec is silent or ambiguous, choose the simplest option that keeps the money path correct, and write the decision into `docs/DECISIONS.md`.
 
 ---
@@ -11,17 +11,17 @@
 1. Work milestone by milestone (section 14). Do not start a milestone until the previous one meets its acceptance criteria.
 2. At the start of each milestone, write a short plan, then build, then run all checks (`pnpm check`), then update `docs/PROGRESS.md`.
 3. Anything marked **OPEN QUESTION** needs a human answer. Use a sensible placeholder behind a config value, and list it in `docs/PROGRESS.md` under "Waiting on founders".
-4. The marketing ads in `docs/brand/` show the intended look of the storefront, checkout, dashboard, receipt, waybill, tracking page and reports. Match their layout and tone.
+4. The images in `docs/brand/` are marketing ads of **another product (Sidadiya)** that inspired this spec. Use them only as a reference for which features and screen sections exist (storefront, checkout, dashboard, receipt, waybill, tracking page, reports). **Do not copy their name, colours, slogans or visual style.** Ape Kade's own look is defined in section 11.
 
 ---
 
 ## 1. Product summary
 
-Sidadiya (sidadiya.com) is a multi-tenant online shop builder for small Sri Lankan sellers who currently take orders through Facebook, Instagram, TikTok and WhatsApp messages.
+Ape Kade (apekade.lk) is a multi-tenant online shop builder for small Sri Lankan sellers who currently take orders through Facebook, Instagram, TikTok and WhatsApp messages.
 
 Each seller gets:
 
-- A store at `sidadiya.com/store/{slug}` where buyers order 24/7.
+- A store at `apekade.lk/store/{slug}` where buyers order 24/7.
 - A checkout that captures name, phone, address, delivery option and payment method (cash on delivery, bank transfer, card).
 - A mobile-first back office to manage products and orders.
 - Automatic order emails, a live tracking page, digital receipts and printable A6 waybills with a COD amount and QR code.
@@ -107,19 +107,19 @@ Check the current docs of each library before using its API; record version-spec
 ## 4. Repository structure
 
 ```
-sidadiya/
+apekade/
   CLAUDE.md
   docs/
     SPEC.md              ← this file
     DECISIONS.md         ← decisions made during build (date, decision, reason)
     PROGRESS.md          ← milestone status, waiting-on-founders list
-    brand/               ← marketing ads (visual reference)
+    brand/               ← another product's ads: feature reference only, not our brand
   src/
     app/
-      (marketing)/       ← sidadiya.com landing, pricing, legal
+      (marketing)/       ← apekade.lk landing, pricing, legal
       (auth)/            ← sign-in, sign-up, OTP
       (seller)/dashboard/← seller back office (requires session + shop)
-      admin/             ← platform admin (Sidadiya team only)
+      admin/             ← platform admin (Ape Kade team only)
       store/[slug]/      ← public storefront, product, cart, checkout
       o/[token]/         ← public order tracking page
       r/[token]/         ← public receipt page
@@ -210,7 +210,7 @@ All tables have `id uuid pk`, `created_at timestamptz default now()`, `updated_a
 
 **shops** — `owner_id → users`, `slug` (unique, 3–30 chars, `[a-z0-9-]`, reserved words blocked), `name`, `tagline`, `logo_url`, `cover_url`, `whatsapp` (E.164), `email`, `address_line1`, `city`, `district`, `brand_color` (hex), `status` enum(`active`, `paused`, `suspended`), `bank_details` jsonb (`bank`, `branch`, `account_name`, `account_number`), `accepts_cod` bool, `accepts_bank_transfer` bool, `accepts_card` bool, `payhere_merchant_id`, `payhere_secret_encrypted`, `receipt_footer`, `onboarding_completed_at`
 
-Reserved slugs: `admin, api, app, dashboard, store, o, r, login, signup, help, support, www, sidadiya, about, pricing, terms, privacy`.
+Reserved slugs: `admin, api, app, dashboard, store, o, r, login, signup, help, support, www, apekade, about, pricing, terms, privacy`.
 
 **shop_members** — `shop_id`, `user_id`, `role` enum(`owner`, `staff`) (Phase 1: owner only)
 
@@ -326,7 +326,7 @@ After commit only: send Inngest event `order/placed`. Emails, seller alerts and 
 - Reminder emails to the seller at day 7, 11 and 13; dashboard banner from day 7 ("Your trial ends in N days").
 - At expiry without payment: shop `paused` → storefront shows "This shop is taking a short break" with a WhatsApp button; checkout disabled; seller can still log in, view data and pay. No data deleted.
 - **OPEN QUESTION:** Pro plan price (monthly LKR). Use `PRO_PLAN_PRICE_CENTS` env var; placeholder 199000 (Rs 1,990).
-- **OPEN QUESTION:** Phase 1 Pro payments — PayHere Recurring for Sidadiya, or manual bank transfer approved by an admin. Build the admin "mark as paid for N months" action first; add PayHere Recurring if credentials are ready.
+- **OPEN QUESTION:** Phase 1 Pro payments — PayHere Recurring for Ape Kade, or manual bank transfer approved by an admin. Build the admin "mark as paid for N months" action first; add PayHere Recurring if credentials are ready.
 
 ### 7.7 Card payments (Phase 2) — per-shop PayHere account
 - Each shop enters its own PayHere Merchant ID and Merchant Secret in settings. The secret is encrypted with AES-256-GCM using `ENCRYPTION_KEY` (env, 32 bytes) before storage and never sent to the client.
@@ -337,7 +337,7 @@ After commit only: send Inngest event `order/placed`. Emails, seller alerts and 
 - **Verify all of the above against the current PayHere developer docs before implementing**, and record any difference in `DECISIONS.md`.
 
 ### 7.8 Analytics capture
-- On the first storefront request per session, read `utm_source` (or `?ref=`) or the `document.referrer` host, map it to `source`, store it in a first-party cookie `sd_src` (30 days) and send a non-blocking beacon to `/api/track` that writes a `visits` row.
+- On the first storefront request per session, read `utm_source` (or `?ref=`) or the `document.referrer` host, map it to `source`, store it in a first-party cookie `ak_src` (30 days) and send a non-blocking beacon to `/api/track` that writes a `visits` row.
 - Mapping: `l.facebook.com | m.facebook.com | facebook.com | fb` → facebook; `l.instagram.com | instagram` → instagram; `wa.me | whatsapp` → whatsapp; `tiktok` → tiktok; `google.` → google; none → direct; anything else → other.
 - The order copies `source` and `utm` from the cookie.
 
@@ -354,7 +354,7 @@ Design mobile-first at 375 px width; scale up to tablet and desktop. Every buyer
 - Search field; filter chips: All, On sale, New arrivals; sort (Newest, Price low–high, Price high–low).
 - "What buyers say" (Phase 2).
 - Product grid, 2 columns on phone: image, name, price, compare-at price struck through, SALE badge, wishlist heart (local only).
-- Footer: shop policy links, "Powered by Sidadiya".
+- Footer: shop policy links, "Powered by Ape Kade".
 - SEO/OG: title, description, image (cover or first product) so links preview in Facebook and WhatsApp.
 - Cache with ISR; revalidate on product or shop change (`revalidateTag('shop:{id}')`).
 
@@ -412,7 +412,7 @@ Shops list with plan status; extend trial; mark subscription paid; suspend shop;
 - "FROM": shop name, address, phone.
 - "ITEMS (n PCS)": lines like `1 × Cotton Kurta (L)`, truncated after 4 with "+ n more".
 - Bottom boxes: "CASH ON DELIVERY Rs. 5,550" (shows "PAID" when not COD), "TRACKING NO." (filled, or blank for handwriting).
-- Footer: payment method, "Sidadiya".
+- Footer: payment method, "Ape Kade".
 - Must print correctly on A6 label printers and on A4 (4 per sheet with cut marks).
 
 ### 9.2 Receipt PDF
@@ -436,22 +436,22 @@ All sent from Inngest functions, logged in `email_log`, retried with backoff (ma
 | Trial day 7, 11, 13 and expired | Seller | Email | 1 |
 | Weekly summary (Monday 08:00 Asia/Colombo) | Seller | Email: orders, revenue, top products, top sources, top towns | 2 |
 
-Sender: `"{Shop name} via Sidadiya" <orders@mail.sidadiya.com>`, reply-to the shop email. Templates in React Email, mobile-first, with the shop's brand colour in the header bar.
+Sender: `"{Shop name} via Ape Kade" <orders@mail.apekade.lk>`, reply-to the shop email. Templates in React Email, mobile-first, with the shop's brand colour in the header bar.
 
 ---
 
 ## 11. Visual design
 
-Brand tokens (approximated from the marketing ads in `docs/brand/` — confirm exact values with the designer):
+Ape Kade has its own warm, market-inspired identity ("Ape Kade" = "our shop"). Placeholder tokens until a designer confirms them:
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--brand-green` | `#14532D` | Primary buttons in dashboard, footer bars, check icons |
-| `--brand-yellow` | `#E9A825` | Marketing CTAs ("Open your shop") |
-| `--brand-highlight` | `#F5CB6A` | Highlighter underline on marketing headlines |
-| `--brand-cream` | `#FAF6EF` | Marketing page background |
-| `--brand-mint` | `#DCEFE6` | Decorative circles, soft panels |
-| `--shop-plum` | `#7A2D5B` | Default shop accent in storefront (avatar, buttons); each shop can override with `brand_color` |
+| `--brand-maroon` | `#7A1F2B` | Primary colour: dashboard buttons, links, logo mark, focus rings (white text, 12:1 contrast) |
+| `--brand-orange` | `#F08A24` | Main marketing call to action ("Create your shop"), key highlights (always dark text on it) |
+| `--brand-peach` | `#FFE3C7` | Highlight behind headline words, soft badges and panels |
+| `--brand-sand` | `#FFF8F1` | Marketing page background |
+| `--brand-ink` | `#2B1A17` | Warm near-black for headings and text on orange |
+| `--shop-accent` | `#7A1F2B` | Default shop accent in the storefront (avatar, buttons); each shop can override with `brand_color` |
 
 - Font: Inter for UI (or a geometric sans chosen by the designer), with Noto Sans Sinhala and Noto Sans Tamil fallbacks.
 - Radius 12 px on cards, fully rounded pills; tap targets at least 44 px.
@@ -527,7 +527,7 @@ Rate limits, security headers, performance pass against budgets, accessibility p
 - [ ] All E2E tests pass on staging, and a production smoke test passes
 - [ ] Real orders placed from Facebook and WhatsApp in-app browsers on Android and iPhone
 - [ ] Waybills printed on A6 and A4 and accepted by a courier
-- [ ] Emails land in the Gmail inbox (SPF, DKIM, DMARC set for mail.sidadiya.com)
+- [ ] Emails land in the Gmail inbox (SPF, DKIM, DMARC set for mail.apekade.lk)
 - [ ] Database restore tested
 - [ ] Sentry and uptime alerts reach the founders' phones
 - [ ] Privacy policy, terms and refund policy published
@@ -541,7 +541,7 @@ Rate limits, security headers, performance pass against budgets, accessibility p
 DATABASE_URL=
 BETTER_AUTH_SECRET=
 BETTER_AUTH_URL=
-NEXT_PUBLIC_APP_URL=https://sidadiya.com
+NEXT_PUBLIC_APP_URL=https://apekade.lk
 ENCRYPTION_KEY=                     # 32 bytes, base64; encrypts shop secrets
 R2_ACCOUNT_ID=
 R2_ACCESS_KEY_ID=
@@ -549,9 +549,9 @@ R2_SECRET_ACCESS_KEY=
 R2_BUCKET=
 NEXT_PUBLIC_ASSETS_URL=
 RESEND_API_KEY=
-EMAIL_FROM_DOMAIN=mail.sidadiya.com
+EMAIL_FROM_DOMAIN=mail.apekade.lk
 TEXTLK_API_KEY=
-TEXTLK_SENDER_ID=Sidadiya
+TEXTLK_SENDER_ID=ApeKade
 INNGEST_EVENT_KEY=
 INNGEST_SIGNING_KEY=
 UPSTASH_REDIS_REST_URL=
@@ -559,8 +559,8 @@ UPSTASH_REDIS_REST_TOKEN=
 SENTRY_DSN=
 NEXT_PUBLIC_POSTHOG_KEY=
 PAYHERE_SANDBOX=true
-SIDADIYA_PAYHERE_MERCHANT_ID=       # Sidadiya's own account for Pro billing
-SIDADIYA_PAYHERE_MERCHANT_SECRET=
+APEKADE_PAYHERE_MERCHANT_ID=       # Ape Kade's own account for Pro billing
+APEKADE_PAYHERE_MERCHANT_SECRET=
 PRO_PLAN_PRICE_CENTS=199000
 TRIAL_DAYS=14
 ```
@@ -573,8 +573,9 @@ Validate all of them at startup in `src/env.ts`; the app must fail fast with a c
 
 1. Pro plan monthly price.
 2. Phase 1 Pro billing: PayHere Recurring or manual bank transfer?
-3. Card payments: confirm per-shop PayHere accounts (assumed) rather than Sidadiya collecting and paying out.
+3. Card payments: confirm per-shop PayHere accounts (assumed) rather than Ape Kade collecting and paying out.
 4. Default delivery fee for new shops.
-5. Exact brand colours and fonts from the designer.
+5. Exact brand colours, logo and fonts from a designer (section 11 values are placeholders).
 6. Which couriers pilot sellers use most (decides Phase 3 order).
 7. Company legal name and address for terms and the receipt footer.
+8. Domain: `apekade.lk` is a placeholder (set via `NEXT_PUBLIC_APP_URL` and `EMAIL_FROM_DOMAIN`); availability not checked yet.

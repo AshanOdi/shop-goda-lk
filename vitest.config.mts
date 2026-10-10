@@ -11,7 +11,7 @@ export default defineConfig({
     environment: "node",
     // src/env.ts validates on import, so tests need the two required variables.
     env: {
-      DATABASE_URL: "postgres://sidadiya:sidadiya@localhost:5432/sidadiya",
+      DATABASE_URL: "postgres://apekade:apekade@localhost:5432/apekade",
       BETTER_AUTH_SECRET: "test-secret-that-is-at-least-32-characters-long",
     },
     passWithNoTests: true,

@@ -1,69 +1,83 @@
-import Image from "next/image";
+import { ArrowRight, Banknote, Link2, Printer, Store, Truck } from "lucide-react";
+import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Button } from "@/components/ui/button";
+import { env } from "@/env";
 
-export default function Home() {
+// Placeholder marketing home page. Ape Kade's own look (SPEC 11), not the reference ads.
+export default async function HomePage() {
+  const t = await getTranslations("HomePage");
+  const domain = new URL(env.NEXT_PUBLIC_APP_URL).host;
+
+  const features = [
+    { key: "link", icon: Link2 },
+    { key: "payments", icon: Banknote },
+    { key: "documents", icon: Printer },
+    { key: "tracking", icon: Truck },
+  ] as const;
+
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="h-5 w-[100px] dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex min-h-dvh flex-col bg-brand-sand text-brand-ink">
+      <header className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 py-4 sm:px-8">
+        <span className="flex size-9 items-center justify-center rounded-xl bg-brand-maroon text-white">
+          <Store className="size-5" aria-hidden />
+        </span>
+        <span className="text-lg font-bold tracking-tight">{t("brand")}</span>
+      </header>
+
+      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-12 px-4 pt-8 pb-16 sm:px-8 sm:pt-16">
+        <section className="flex max-w-2xl flex-col gap-5">
+          <p className="text-sm font-semibold tracking-wide text-brand-maroon uppercase">
+            {t("eyebrow")}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="h-[14px] w-4 dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <h1 className="text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl">
+            {t.rich("title", {
+              mark: (chunks) => (
+                <mark className="rounded-md bg-brand-peach px-1 text-inherit">{chunks}</mark>
+              ),
+            })}
+          </h1>
+          <p className="text-lg text-brand-ink/75">{t("subtitle")}</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 rounded-full bg-brand-orange px-6 text-base font-bold text-brand-ink hover:bg-brand-orange/90"
+            >
+              <Link href="/signup">
+                {t("cta")}
+                <ArrowRight aria-hidden />
+              </Link>
+            </Button>
+            <p className="text-sm text-brand-ink/70">{t("trial")}</p>
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-4" aria-labelledby="features-title">
+          <h2 id="features-title" className="text-xl font-bold">
+            {t("featuresTitle")}
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {features.map(({ key, icon: Icon }) => (
+              <li key={key} className="flex gap-4 rounded-xl border bg-card p-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand-peach text-brand-maroon">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <div>
+                  <p className="font-semibold">{t(`features.${key}.title`)}</p>
+                  <p className="text-sm text-brand-ink/70">
+                    {t(`features.${key}.body`, { domain })}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
+
+      <footer className="border-t border-brand-ink/10 py-6 text-center text-sm text-brand-ink/60">
+        {t("footer")}
+      </footer>
     </div>
   );
 }

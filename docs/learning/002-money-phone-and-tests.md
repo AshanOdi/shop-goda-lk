@@ -7,7 +7,7 @@
 
 ## What we built
 
-Two small helper files every other part of Sidadiya depends on: `money.ts` does all price maths and formats amounts as "Rs 5,050", and `phone.ts` turns any way a buyer types a Sri Lankan mobile number into one standard form. We also added Vitest, a tool that runs automated tests, and wrote tests that prove both files behave correctly.
+Two small helper files every other part of Ape Kade depends on: `money.ts` does all price maths and formats amounts as "Rs 5,050", and `phone.ts` turns any way a buyer types a Sri Lankan mobile number into one standard form. We also added Vitest, a tool that runs automated tests, and wrote tests that prove both files behave correctly.
 
 ## Why it matters
 
