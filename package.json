@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@next/env": "^16.4.0",
+    "@sentry/nextjs": "^11",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "drizzle-orm": "^0.45.4",

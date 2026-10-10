@@ -40,7 +40,7 @@ const envSchema = z.object({
   UPSTASH_REDIS_REST_URL: z.url().optional(),
   UPSTASH_REDIS_REST_TOKEN: optionalString,
 
-  SENTRY_DSN: z.url().optional(),
+  NEXT_PUBLIC_SENTRY_DSN: z.url().optional(),
   NEXT_PUBLIC_POSTHOG_KEY: optionalString,
 
   PAYHERE_SANDBOX: z.stringbool().default(true),
