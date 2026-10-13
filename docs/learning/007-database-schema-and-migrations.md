@@ -103,8 +103,9 @@ Better Auth reads and writes tables it expects to look a certain way (`emailVeri
 | File | What it does |
 | --- | --- |
 | `src/server/db/schema/_columns.ts` | Shared `id()` (UUID v7), `timestamptz()`, `timestamps` helpers |
-| `src/server/db/schema/auth.ts` | `users`, `sessions`, `accounts`, `verifications` (Better Auth) |
-| `src/server/db/schema/shops.ts` | `shops`, `shop_members`, `shop_counters`, enums, slug check |
+| `src/server/db/schema/users.ts`, `sessions.ts`, `accounts.ts`, `verifications.ts` | Better Auth tables (one file per table) |
+| `src/server/db/schema/shops.ts` | `shops`, its status enum, bank details type, slug check |
+| `src/server/db/schema/shop-members.ts`, `shop-counters.ts` | Who manages a shop; per-shop order number counter |
 | `src/server/db/schema/subscriptions.ts` | `subscriptions` and its enums |
 | `src/server/db/schema/index.ts` | Re-exports all tables |
 | `drizzle/0000_*.sql`, `drizzle/meta/*` | First migration and drizzle-kit's snapshot (generated) |
