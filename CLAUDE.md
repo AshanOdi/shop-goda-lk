@@ -25,7 +25,7 @@ Not allowed: Supabase Auth or Supabase client SDK for data, Prisma, Redux, CSS-i
 
 - **Money** is integer cents (`*_cents`), LKR only, all math through `src/lib/money.ts`. No floats.
 - **Phones** stored as E.164 (`+947XXXXXXXX`) via `src/lib/phone.ts`.
-- **Tenancy:** every tenant table has `shop_id`; every tenant query goes through `withShop(shopId)` in `src/server/db/tenant.ts`; Postgres RLS is enabled as a second guard. Services take `shopId` as the first argument.
+- **Tenancy:** every tenant table has `shop_id`; every tenant query goes through `withShop(shopId)` in `src/server/db/tenant.ts`; Postgres RLS is enabled as a second guard. Services take `shopId` as the first argument. A new tenant table needs, in its migration: `ENABLE ROW LEVEL SECURITY`, a policy using `app_current_shop_id()`, and grants to `apekade_app` (see `drizzle/0002_*.sql`); `tests/integration/rls-coverage.test.ts` enforces this.
 - **Prices** are always recalculated on the server from the DB. Never trust client totals.
 - **Order placement** is one transaction (SPEC 7.5). Emails, PDFs, SMS and analytics run in Inngest jobs after commit and must never break checkout.
 - **Order status** changes only through `orders.transition()` following the state machine in SPEC 7.1.
@@ -45,7 +45,7 @@ Not allowed: Supabase Auth or Supabase client SDK for data, Prisma, Redux, CSS-i
 ## Commands
 
 - `pnpm dev` — run locally (works with only `DATABASE_URL` and `BETTER_AUTH_SECRET` set)
-- `pnpm check` — typecheck + lint + unit and integration tests (must pass before every commit)
+- `pnpm check` — typecheck + lint + unit and integration tests (must pass before every commit; integration tests need `docker compose up -d` and `pnpm db:migrate`)
 - `pnpm test:e2e` — Playwright end-to-end tests
 - `pnpm db:generate` / `pnpm db:migrate` — Drizzle migrations
 - `pnpm db:seed` — seed the demo shop "ABC Fashion"
