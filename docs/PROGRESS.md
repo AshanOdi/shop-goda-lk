@@ -2,7 +2,7 @@
 
 ## Current milestone
 
-M1 — Auth, shops, tenancy (planned)
+M1 — Auth, shops, tenancy (in progress)
 
 ### M1 plan
 
@@ -16,6 +16,11 @@ Acceptance (SPEC 14): a new seller reaches an empty dashboard with a live (empty
 6. `m1/dashboard-shell`: empty seller dashboard with bottom tab bar, and an empty public store page at `/store/[slug]`.
 
 ## Done
+
+### M1 — Auth, shops, tenancy (in progress)
+
+- M1 task 1 `m1/accounts-schema`: users/sessions/accounts/verifications, shops, shop_members, shop_counters, subscriptions; first migration; CI migrates (PR #9).
+- M1 task 2 `m1/tenancy-rls`: `apekade_app` role, RLS policies, `withShop()`, 13 integration tests incl. an RLS coverage guard.
 
 ### M0 — Foundation ✅ (2026-10-10)
 
