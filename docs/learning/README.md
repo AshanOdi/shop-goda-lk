@@ -11,3 +11,4 @@ One note per task, explaining what was built and the new concepts it used. Read 
 | 005 | [End-to-end tests and continuous integration](005-e2e-tests-and-ci.md) | M0 |
 | 006 | [Deploying to Vercel and Supabase, and error monitoring with Sentry](006-deploy-and-error-monitoring.md) | M0 |
 | 007 | [Database schema and migrations: users, shops, subscriptions](007-database-schema-and-migrations.md) | M1 |
+| 008 | [Multi-tenancy and Row Level Security](008-multi-tenancy-and-rls.md) | M1 |
