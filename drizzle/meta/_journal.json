@@ -8,6 +8,20 @@
       "when": 1791654572987,
       "tag": "0000_grey_maddog",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791966074597,
+      "tag": "0001_tenant_role",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791966076721,
+      "tag": "0002_tenant_rls",
+      "breakpoints": true
     }
   ]
 }
