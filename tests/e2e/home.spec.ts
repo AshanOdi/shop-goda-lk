@@ -6,7 +6,7 @@ test.describe("home page", () => {
 
     await expect(page).toHaveTitle(/Ape Kade/);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("real online shop");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("in one place");
 
     const cta = page.getByRole("link", { name: "Create your shop" });
     await expect(cta).toHaveAttribute("href", "/signup");

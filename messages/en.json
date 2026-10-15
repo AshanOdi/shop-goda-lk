@@ -5,12 +5,22 @@
   },
   "HomePage": {
     "brand": "Ape Kade",
+    "navCta": "Start selling",
     "eyebrow": "For sellers on Facebook, Instagram, TikTok and WhatsApp",
-    "title": "Turn your page into a <mark>real online shop.</mark>",
+    "title": "Your shop, <accent>finally</accent> in one place.",
     "subtitle": "Buyers choose their items, pick cash on delivery or bank transfer, and place the order themselves. Every order lands in one place, ready to pack and ship.",
     "cta": "Create your shop",
     "trial": "Free for 14 days. No card needed.",
-    "featuresTitle": "Everything a small shop needs",
+    "preview": {
+      "label": "Ape Kade · Live",
+      "example": "Example",
+      "status": "Online",
+      "ordersLabel": "This month's orders",
+      "ordersValue": "128",
+      "ordersNote": "All packed up"
+    },
+    "featuresEyebrow": "Built for the everyday hustle",
+    "featuresTitle": "Everything a small shop needs.",
     "features": {
       "link": {
         "title": "Your own shop link",
@@ -28,6 +38,11 @@
         "title": "Order tracking for buyers",
         "body": "Buyers follow their order with a link, so fewer \"where is my parcel?\" messages."
       }
+    },
+    "closing": {
+      "eyebrow": "Ready when you are",
+      "title": "Take your next order online.",
+      "noCard": "No card needed"
     },
     "footer": "© Ape Kade · Made in Sri Lanka"
   }
