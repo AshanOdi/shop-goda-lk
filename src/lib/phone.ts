@@ -38,3 +38,17 @@ export function formatPhone(e164: string): string {
   const local = e164.slice(3);
   return `0${local.slice(0, 2)} ${local.slice(2, 5)} ${local.slice(5)}`;
 }
+
+/** True only for a stored, normalised number: "+94771234567". */
+export function isE164Mobile(value: string): boolean {
+  return E164_MOBILE.test(value);
+}
+
+/**
+ * "+94771234567" → "+9477•••4567", for logs and debugging output.
+ * CLAUDE.md: never log full phone numbers. Anything else becomes "[phone]".
+ */
+export function maskPhone(e164: string): string {
+  if (!E164_MOBILE.test(e164)) return "[phone]";
+  return `${e164.slice(0, 5)}•••${e164.slice(-4)}`;
+}

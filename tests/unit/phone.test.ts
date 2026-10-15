@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPhone, isValidPhone, normalizePhone } from "@/lib/phone";
+import { formatPhone, isE164Mobile, isValidPhone, maskPhone, normalizePhone } from "@/lib/phone";
 
 describe("normalizePhone", () => {
   it.each([
@@ -64,5 +64,26 @@ describe("formatPhone", () => {
   it("returns anything that isn't E.164 unchanged", () => {
     expect(formatPhone("0771234567")).toBe("0771234567");
     expect(formatPhone("")).toBe("");
+  });
+});
+
+describe("isE164Mobile", () => {
+  it("accepts only the stored E.164 form", () => {
+    expect(isE164Mobile("+94771234567")).toBe(true);
+    expect(isE164Mobile("94771234567")).toBe(false);
+    expect(isE164Mobile("0771234567")).toBe(false);
+    expect(isE164Mobile("+94112345678")).toBe(false);
+    expect(isE164Mobile("+947712345678")).toBe(false);
+  });
+});
+
+describe("maskPhone", () => {
+  it("hides the middle digits", () => {
+    expect(maskPhone("+94771234567")).toBe("+9477•••4567");
+  });
+
+  it("never echoes input that isn't a normalised number", () => {
+    expect(maskPhone("0771234567")).toBe("[phone]");
+    expect(maskPhone("kasun@example.com")).toBe("[phone]");
   });
 });
