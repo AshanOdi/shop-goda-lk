@@ -446,12 +446,14 @@ Ape Kade has its own warm, market-inspired identity ("Ape Kade" = "our shop"). P
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--brand-maroon` | `#7A1F2B` | Primary colour: dashboard buttons, links, logo mark, focus rings (white text, 12:1 contrast) |
-| `--brand-orange` | `#F08A24` | Main marketing call to action ("Create your shop"), key highlights (always dark text on it) |
-| `--brand-peach` | `#FFE3C7` | Highlight behind headline words, soft badges and panels |
-| `--brand-sand` | `#FFF8F1` | Marketing page background |
-| `--brand-ink` | `#2B1A17` | Warm near-black for headings and text on orange |
-| `--shop-accent` | `#7A1F2B` | Default shop accent in the storefront (avatar, buttons); each shop can override with `brand_color` |
+| `--brand-maroon` | `#8F3D2F` | Baked clay: primary buttons, dashboard accents, panels (white or sand text, 7:1) |
+| `--brand-orange` | `#F6A23A` | Citrus orange: main call to action ("Create your shop"), highlights, focus rings (always dark text on it, 8.7:1) |
+| `--brand-peach` | `#FFD7A8` | Hover state for orange buttons, soft badges, highlights on maroon (5.4:1) |
+| `--brand-sand` | `#F7F1E7` | Light page background and text on dark backgrounds |
+| `--brand-ink` | `#171615` | Near-black: marketing page background, headings and text on orange |
+| `--shop-accent` | `#F6A23A` | Default shop accent in the storefront (avatar, buttons); each shop can override with `brand_color` |
+
+Text contrast must stay at or above 4.5:1 (WCAG AA). Orange text on maroon (3.5:1) is only for large headings or decoration.
 
 - Font: Inter for UI (or a geometric sans chosen by the designer), with Noto Sans Sinhala and Noto Sans Tamil fallbacks.
 - Radius 12 px on cards, fully rounded pills; tap targets at least 44 px.
