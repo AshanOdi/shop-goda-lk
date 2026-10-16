@@ -22,6 +22,7 @@ Acceptance (SPEC 14): a new seller reaches an empty dashboard with a live (empty
 - M1 task 1 `m1/accounts-schema`: users/sessions/accounts/verifications, shops, shop_members, shop_counters, subscriptions; first migration; CI migrates (PR #9).
 - M1 task 2 `m1/tenancy-rls`: `apekade_app` role, RLS policies, `withShop()`, 13 integration tests incl. an RLS coverage guard.
 - `m1/home-redesign`: adopted the v0 home page design after review (i18n, contrast, tap targets); SPEC 11 palette updated.
+- M1 task 3 `m1/sms-provider`: `SmsProvider` interface, console and Text.lk adapters, provider selection, 13 unit tests.
 
 ### M0 — Foundation ✅ (2026-10-10)
 
@@ -41,3 +42,4 @@ See docs/SPEC.md section 17. Placeholders in use:
 - Domain `apekade.lk` (`NEXT_PUBLIC_APP_URL`, `EMAIL_FROM_DOMAIN`): availability not checked.
 - Brand colours and logo (SPEC 11): placeholder maroon/orange tokens, text-only logo.
 - Pro plan price: `PRO_PLAN_PRICE_CENTS=199000`.
+- Text.lk account and sender ID `ApeKade` (`TEXTLK_API_KEY`, `TEXTLK_SENDER_ID`): needed before real OTPs can be sent; until then OTPs are printed in the server log.
