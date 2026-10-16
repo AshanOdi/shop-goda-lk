@@ -13,3 +13,4 @@ One note per task, explaining what was built and the new concepts it used. Read 
 | 007 | [Database schema and migrations: users, shops, subscriptions](007-database-schema-and-migrations.md) | M1 |
 | 008 | [Multi-tenancy and Row Level Security](008-multi-tenancy-and-rls.md) | M1 |
 | 009 | [Reviewing an AI-generated design (v0)](009-reviewing-ai-generated-ui.md) | M1 |
+| 010 | [SMS provider: interfaces, adapters and fakes](010-sms-provider-and-adapters.md) | M1 |
